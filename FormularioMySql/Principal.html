@@ -1,0 +1,60 @@
+
+<html>
+<head>
+	
+<script type="text/javascript">
+
+	function validar(){
+
+
+		var nombre = document.getElementById("nombre").value;
+		var apellido1 = document.getElementById("ap1").value;
+		var apellido2 = document.getElementById("ap2").value;
+		var direccion = document.getElementById("dir").value;
+		var codPostal = document.getElementById("cp").value;
+
+
+		if (nombre == "" || ap1 == "" || ap2 == "" || direccion == "" || codPostal == "") {
+		
+			alert("Algun campo esta vacio");
+			return false;
+
+		} else {
+
+			return true;
+			
+		}
+	}
+
+</script>
+
+</head>
+<body>
+
+
+	<form action="validarFormulario.php" name="form1" method="post" onSubmit="return validar();">
+
+	<table align="center" border="1" bgcolor="#CCCCFF" bordercolor="#000066" cellpadding="5">
+		<tr><td>
+	Nombre:<INPUT type="text" id="nombre" name="nombre" size="25"><BR>
+
+	1<SUP>er</SUP>Apellido:<INPUT type="text" id="ap1" name="ap1" size="25"><BR>
+
+	2º Apellido:<INPUT type="text" id="ap2" name="ap2" size="25"><BR>
+
+	Direccion: <INPUT type="text" id="dir" name="dir" size="30"><BR>
+
+	Postal: <INPUT type="text" id="cp" name="cp" size="5"><BR>
+
+	
+	<INPUT type="submit" value="ENVIAR">
+	<INPUT type="reset" value="BORRAR">
+
+		</tr></td>
+	</table>
+</form>
+
+
+</body>
+<p align="right"> <a href="libro_visitas.php"><?=leer_texto("general","volver_libro",$_SESSION['idioma'])?></a> </p>
+</html>
