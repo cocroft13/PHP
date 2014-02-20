@@ -1,33 +1,11 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 <?php
 
 	include("./configuracion.php");
-	
-
-	if (isset($_GET['nombre'])) {
+	cabecera_html();
 		
-		$_SESSION['usuario'] = $_GET['nombre'];
-		$user = $_SESSION['usuario'];
-		cabecera_html_carrito($user);
-		echo "<input type=\"button\" align=\"right\" value=\"Cerrar sesion\" name=\"botonCerrarSesion\" id=\"botonCerrarSesion\" onclick=\"<?php cerrar_sesion('$user') ?>\"; <br>";
-	?>
-		
-
-	<?php
-
-	} else {
-
-		$_SESSION['usuario'] = "";
-		cabecera_html();
-
-	}
-
-	//echo $_SESSION['usuario'];	
 ?>
-
-<table border="1" align="center" cellspacing="5">
-
-	<tr><td align="center"> <h3>Lista de articulos </h3> </td> </tr>
-	<tr><td valign="top">
 
 	<?php
 	
@@ -43,27 +21,33 @@
 			$sql = "SELECT * FROM productos";
 			$res = mysql_query($sql,$con);
 			$filas = mysql_num_rows($res);
-
+			$cont = 0;
 
 			if ($filas != 0) {
 				
 				while ($linea = mysql_fetch_array($res)) {
+
+	?>
+
+					<div align="center">
+						<center>
+							<img src="./img/<?php echo $linea['imagen'];?>" width="120px" height="130px"> <br>
+							<span> <b> Nombre: </b> <?php echo $linea['nombre'];?></span> <br>							
+							<span> <b> Precio: </b> <?php echo $linea['precio'];?> € </span> <br>
+							<span> <b> Stock: </b> <?php echo $linea['cantidad'];?> uds </span> <br>													
+							<a href="./carrito.php?id=<?php echo $linea['cod_producto'];?>"> Ver </a>
+						</center>
+					</div>
+					<br>
+					<br>
+					<br>
+					<br>
+	<?php
 					
-					echo "<table  border=\"1\"";
-					echo "bgcolor=\"gray\" cellpadding=\"5\" cellspaccing=\"3\">";
-					echo "<tr><th> PRODUCTO: </th><td>{$linea['nombre']} </td>";
-					echo "<tr><th> PRECIO: </th><td>{$linea['precio']} </td>";
-					echo "<tr><th> STOCK: </th><td>{$linea['cantidad']} </td>";
-					echo "<tr><th> CANTIDAD: </th><td> <input type=\"text\">" ;
-					echo "<tr><th> COMPRAR: </th><td> <input type=\"checkbox\" name=\"articulos\"> </td>";
-					echo "<br>";
 
-				}
-
+				}				
 			}
-
 		}
 
 	?>
 
-</table>
