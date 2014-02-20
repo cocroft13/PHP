@@ -11,7 +11,6 @@
 	function cabecera_html(){
 
 
-
 		if (isset($_SESSION['usuario'])) {
 			
 		echo "<html> \n";
@@ -39,31 +38,7 @@
 		echo "<p align=\"right\"> <a href=\"alta_usuario.php\"> Registrarse </a> </p>";
 
 		}
-
-
-
-
-
-
 	}
-
-
-	function cabecera_html_carrito($usuario){
-
-		
-
-
-
-
-	    echo "<br>";	    
-	    echo "<br>";	    
-	    echo "</head> \n";
-	    echo "<body> \n";
-
-
-	}
-
-
 
 
 	//METODO QUE SERVIRIA PARA CERRAR LA SESION Y CAMBIAR LA CABECERA A LA BASICA, DESTRUYENDO LA VARIABLE DE SESION

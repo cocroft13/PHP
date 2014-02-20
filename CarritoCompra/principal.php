@@ -4,6 +4,23 @@
 
 	include("./configuracion.php");
 	cabecera_html();
+
+	if (isset($_SESSION['carrito'])) {
+		
+		$arreglo = $_SESSION['carrito'];
+
+		echo "<div align='left';";
+		echo " <p align='left'> <b> Mi carrito: </b> </p> ";
+		echo "<b> Producto adquirido: </b>" . " " . $arreglo['Nombre:'] . " " . "<br>";
+		echo "<b> Cantidad adquirida: </b>" . " " . $arreglo['Cantidad:'];
+		echo "</div>";
+
+	} else {
+
+
+
+	}
+
 		
 ?>
 

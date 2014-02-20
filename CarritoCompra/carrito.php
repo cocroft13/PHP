@@ -7,6 +7,19 @@
 
 	cabecera_html();
 
+		if (isset($_SESSION['usuario'])){
+			
+			if (isset($_SESSION['carrito'])) {
+				
+				$arrayCompra[] = $_SESSION['carrito'];
+
+			} else {
+
+				$_SESSION['carrito'] = "";
+
+			}
+		}
+
 		$con = @mysql_connect(DB_HOST,DB_USER,DB_PASSWORD);
 
 		if (!$con || !mysql_select_db(DB_NAME,$con)) {
@@ -36,6 +49,8 @@
 
 								<form name="formCantidad" method="post" action="validar_compra.php">
 								<input type="hidden" name="campo_cod_producto" value="<?php echo $linea['cod_producto']?>">
+								<input type="hidden" name="campo_nombre_producto" value="<?php echo $linea['nombre']?>">
+								<input type="hidden" name="campo_precio_producto" value="<?php echo $linea['precio'];?>">
 								</b> <select name="listaCantidad">
 				<?php
 
@@ -77,9 +92,7 @@
 					<br>
 	<?php
 					
-
-				}
-					
+				}					
 			}
 		}
 
