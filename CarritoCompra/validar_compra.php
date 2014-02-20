@@ -1,6 +1,9 @@
 <?php
 
 	include("./configuracion.php");
+
+	
+
 	
 	$con = mysql_connect(DB_HOST,DB_USER,DB_PASSWORD);
 
@@ -13,15 +16,24 @@
 
 		if (isset($_SESSION['usuario'])) {
 
+			$_SESSION['total'];
+
 			$nombre = $_REQUEST['campo_nombre_producto'];
 			$cod_producto = $_REQUEST['campo_cod_producto'];
+							
 			$cantidad = $_REQUEST['listaCantidad'];
+
+						
 			$precio = $_REQUEST['campo_precio_producto'];
-			
+
+			$_SESSION['total'] = $_SESSION['total'] + $cantidad;
+
 
 			$arreglo = array("Id" => $_POST['campo_cod_producto'],
 							 "Nombre:" => $nombre,
-							 "Cantidad:" => $cantidad + $cantidad);
+							 "Cantidad:" => $_SESSION['total']);
+
+
 
 
 			$_SESSION['carrito'] = $arreglo;

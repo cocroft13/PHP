@@ -14,11 +14,6 @@
 		echo "<b> Producto adquirido: </b>" . " " . $arreglo['Nombre:'] . " " . "<br>";
 		echo "<b> Cantidad adquirida: </b>" . " " . $arreglo['Cantidad:'];
 		echo "</div>";
-
-	} else {
-
-
-
 	}
 
 		
